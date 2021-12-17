@@ -50,11 +50,10 @@ public class PracownikDao {
             }
         });
     }
-        public void delete(int id) {
-        String sql = "delete from pracownik where id=" + id;
-        template.update(sql);
+    public void delete(int id) {
+    String sql = "delete from pracownik where id=" + id;
+    template.update(sql);
     }
-    
     
     public int update(Pracownik p) {
         String sql = "update pracownik set " + "nazwisko = '" + p.getNazwisko() 

@@ -29,7 +29,7 @@ public class PracownikController {
     @Autowired
     PracownikDao dao;
     
-        @RequestMapping("/addForm")
+    @RequestMapping("/addForm")
     public String showform(Model m) {
         m.addAttribute("command", new Pracownik());
         return "addForm";
@@ -75,5 +75,6 @@ public class PracownikController {
         mav.setViewName("error");
         return mav;
     }
+
     
 }

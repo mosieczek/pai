@@ -21,7 +21,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <error-page>
-        <location>/jsp/error</location>
+        <location>/jsp/error.jsp</location>
     </error-page>
 
 </web-app>

@@ -13,6 +13,13 @@
     </head>
     <body>
         <h1>Error Page</h1>
+        <p>
+            Failed URL: ${url}
+            Exception: ${exception.message}
+            <c:forEach items="${exception.stackTrace}" var="ste"> 
+                <${ste} 
+            </c:forEach>
+        </p>
         <div>
             <button onclick="history.back()">Wróć do poprzedniej strony</button>
         </div>

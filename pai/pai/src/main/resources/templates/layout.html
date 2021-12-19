@@ -25,6 +25,10 @@
         <a th:href="@{/profile}">Wyświetl swoje konto</a></li>
         <li sec:authorize="isAuthenticated()">
         <a th:href="@{/users}">Wyświetl użytkowników</a></li>
+        <li sec:authorize="isAuthenticated()">
+        <a th:href="@{/editprofile}">Edytuj profil</a></li>
+        <li sec:authorize="isAuthenticated()">
+        <a th:href="@{/deleteprofile}">Usuń profil</a></li>
         <li sec:authorize="!isAuthenticated()">
         <a th:href="@{/login}">Zaloguj się</a></li>
         <li sec:authorize="isAuthenticated()">

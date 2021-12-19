@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "Users")
@@ -17,9 +20,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userid;
+    @NotEmpty
+    @Pattern(regexp = "[a-zA-Z]{2,30}",message="Podaj poprawnie imie")
     private String name;
+    @NotEmpty
+    @Pattern(regexp = "[a-zA-Z]{2,30}",message="Podaj poprawnie nazwisko")
     private String surname;
+    @NotEmpty
+    @Pattern(regexp = "[a-zA-Z]{2,30}",message="Podaj poprawny login")
     private String login;
+    @NotEmpty
+    @Pattern(regexp = "[a-zA-Z]{2,30}",message="Podaj poprawne haslo")
     private String password;
 
     public Integer getUserid() {

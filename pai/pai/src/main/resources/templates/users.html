@@ -19,13 +19,32 @@
     <body>
         <div th:include="layout :: navigationPanel"></div>
         <div>
-            <h1>Lista użytkowników</h1>
+             <h1>Lista użytkowników:</h1>
+        <div th:if="${#lists.isEmpty(userlist)}">
+            Brak użytkowników w bazie danych...
         </div>
-        <div th:fragment="footer">
-            <footer class="footer">
-                <hr/>
-                <p>Politechnika Lubelska, wprowadzenie do Spring Boot</p>
-            </footer>
+        <table th:if="${!#lists.isEmpty(userlist)}">
+            <thead>
+                <tr>
+                    <th>UserID</th>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Login</th>
+                    <th>Zaszyfrowane hasło</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${userlist}">
+                    <td th:text="${user.userid}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.surname}"></td>
+                    <td th:text="${user.login}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td><a th:href="@{/delete/__${user.userid}__}" >Usuń</a></td>
+                </tr>
+            </tbody>
+        </table>
         </div>
+        <div th:include="layout :: footer"></div>
     </body>
 </html>

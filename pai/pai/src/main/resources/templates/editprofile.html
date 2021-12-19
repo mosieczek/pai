@@ -19,14 +19,12 @@
     <body>
 
         <div th:include="layout :: navigationPanel"></div>
-            <h1>Rejestracja:</h1>
-            <form th:action="@{/register}" method="POST" th:object="${user}">
-                <input type="text" th:field="*{name}" placeholder="Imię" th:errorClass="error"/>
-                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-                <input type="text" th:field="*{surname}" placeholder="Nazwisko" th:errorClass="error"/>
-                <input type="text" th:field="*{login}" placeholder="Login" th:errorClass="error"/>
-                <input type="password" th:field="*{password}" placeholder="Hasło" th:errorClass="error"/>
-                <button type="submit">Zarejestruj się</button>
+                <form th:action="@{/editprofile/save}" method="POST">
+                <input type="text" th:field="*{user.name}" placeholder="Imię"th:errorClass="error" />
+                <input type="text" th:field="*{user.surname}" placeholder="Nazwisko" th:errorClass="error"/>
+                <input type="text" th:field="*{user.login}" placeholder="Login" th:errorClass="error"/>
+                <input type="password" th:field="*{user.password}" placeholder="Hasło"/>
+                <button type="submit">Zapisz zmiany</button>
             </form>
         <div th:include="layout :: footer"></div>
     </body>

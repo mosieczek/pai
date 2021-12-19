@@ -27,6 +27,8 @@ public class PaiApplication {
         passwordEncoder.encode("admin")));
         dao.save(new User("Ania", "Annowska","ania",
         passwordEncoder.encode("ania")));
+         dao.save(new User("ada", "ada","ada",
+        passwordEncoder.encode("ada")));
     }
 
 }

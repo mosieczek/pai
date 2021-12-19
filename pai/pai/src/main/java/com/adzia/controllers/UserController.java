@@ -8,13 +8,17 @@ package com.adzia.controllers;
 import com.adzia.dao.userDao;
 import com.adzia.entity.User;
 import java.security.Principal;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 public class UserController {
@@ -34,11 +38,16 @@ public class UserController {
         //zwrócenie nazwy widoku rejestracji - register.html
         return "register";
     }
+    @Valid
     @PostMapping("/register")
-    public String registerPagePOST(@ModelAttribute(value = "user") User user) {
+    public String registerPagePOST(@Valid @ModelAttribute(value = "user") User user, BindingResult binding) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        
+        if (binding.hasErrors()) {
+            System.out.println("dupa");
+//            return "register"; // powrót do formularza
+        }
         dao.save(user);
-        //przekierowanie do adresu url: /login
         return "redirect:/login";
     }
     @GetMapping("/profile")
@@ -50,8 +59,46 @@ public class UserController {
     }
     @GetMapping("/users")
     public String usersPage(Model m){
-        m.addAttribute("users", dao.findAll());
+        m.addAttribute("userlist", dao.findAll());
         return "users";
     }
-   //definicja metody, która zwróci do widoku users.html listę użytkowników z bd
+    @GetMapping("/delete/{id}")
+    public String getUserId(@PathVariable Integer id, Model m, Principal principal) {
+        dao.deleteById(id);
+        m.addAttribute("userList", dao.findAll());
+        
+        if(dao.findByLogin(principal.getName()) == dao.findUserByUserid(id)){
+            return "redirect:/logout";
+        }
+        else{
+            return "redirect:/users";
+        }
+    }
+    
+    @GetMapping("/deleteprofile")
+    public String getUserId(Principal principal) {
+        dao.delete(dao.findByLogin(principal.getName()));
+        return "redirect:/logout";
+    }
+    @GetMapping("/editprofile")
+    public String editProfilePage(Model m, Principal principal) {
+        //dodanie do modelu obiektu user - aktualnie zalogowanego użytkownika:
+        m.addAttribute("user", dao.findByLogin(principal.getName()));
+        //zwrócenie nazwy widoku profilu użytkownika - profile.html
+        return "editprofile";
+    }
+    
+    @PostMapping("/editprofile/save")
+    public String editProfilePost(@Valid @ModelAttribute(value = "user") User user, Principal principal, BindingResult binding) {
+        User currentUser = dao.findByLogin(principal.getName());
+        currentUser.setName(user.getName());
+        currentUser.setSurname(user.getSurname());
+        currentUser.setLogin(user.getLogin());
+        currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        dao.save(currentUser);
+        if (binding.hasErrors()) {
+            return "editprofile"; // powrót do formularza
+        }
+        return "redirect:/profile";
+    }
 }

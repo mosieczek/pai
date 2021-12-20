@@ -44,8 +44,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         
         if (binding.hasErrors()) {
-            System.out.println("dupa");
-//            return "register"; // powrót do formularza
+            return "register"; // powrót do formularza
         }
         dao.save(user);
         return "redirect:/login";
@@ -87,18 +86,18 @@ public class UserController {
         //zwrócenie nazwy widoku profilu użytkownika - profile.html
         return "editprofile";
     }
-    
+    @Valid  
     @PostMapping("/editprofile/save")
-    public String editProfilePost(@Valid @ModelAttribute(value = "user") User user, Principal principal, BindingResult binding) {
+    public String editProfilePost(@Valid @ModelAttribute(value = "user") User user, BindingResult binding, Principal principal) {
         User currentUser = dao.findByLogin(principal.getName());
         currentUser.setName(user.getName());
         currentUser.setSurname(user.getSurname());
         currentUser.setLogin(user.getLogin());
         currentUser.setPassword(passwordEncoder.encode(user.getPassword()));
-        dao.save(currentUser);
         if (binding.hasErrors()) {
             return "editprofile"; // powrót do formularza
         }
+        dao.save(currentUser);
         return "redirect:/profile";
     }
 }

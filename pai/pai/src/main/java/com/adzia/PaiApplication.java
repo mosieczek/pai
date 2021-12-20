@@ -23,12 +23,12 @@ public class PaiApplication {
     
     @PostConstruct
     public void init() {
-        dao.save(new User("Piotr", "Piotrowski","admin", 
-        passwordEncoder.encode("admin")));
-        dao.save(new User("Ania", "Annowska","ania",
-        passwordEncoder.encode("ania")));
-         dao.save(new User("ada", "ada","ada",
-        passwordEncoder.encode("ada")));
+//        dao.save(new User("Piotr", "Piotrowski","admin", 
+//        passwordEncoder.encode("admin123")));
+//        dao.save(new User("Ania", "Annowska","ania",
+//        passwordEncoder.encode("ania123")));
+//         dao.save(new User("ada", "ada","ada",
+//        passwordEncoder.encode("ada123")));
     }
 
 }

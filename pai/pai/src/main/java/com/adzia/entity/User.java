@@ -10,11 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Users")
@@ -31,7 +28,7 @@ public class User {
     @NotEmpty
     @Pattern(regexp = "[a-zA-Z]{2,30}",message="Podaj poprawny login")
     private String login;
-//    @Pattern(regexp = "[a-zA-Z]{2,30}",message="Podaj poprawne hasło")
+    @Pattern(regexp = "[A-Za-z\\d@$!%./*#?&]{8,100}",message="Podaj poprawne hasło") //^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%./*#?&]{8,100}
     @NotEmpty(message="Podaj hasło")
     private String password;
 

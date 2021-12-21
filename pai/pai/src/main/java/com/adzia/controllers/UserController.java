@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 
 @Controller
 public class UserController {
@@ -98,6 +98,6 @@ public class UserController {
             return "editprofile"; // powrót do formularza
         }
         dao.save(currentUser);
-        return "redirect:/profile";
+        return "redirect:/logout";
     }
 }

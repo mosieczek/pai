@@ -49,6 +49,16 @@ function dodaj(){
 
 function edytuj(e){
     const id = e.value;
+    fetch("http://localhost:8080/students/all")
+    .then((response) => {
+        if (response.status !== 200) {
+            return Promise.reject('Coś poszło nie tak!'); 
+        }
+        return response.json();
+    })
+    .then( (data) => { pokazTabele(data); } )
+    .catch( (error) => { console.log(error); } );
+    
     
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "http://" + window.location.host +
@@ -89,8 +99,6 @@ function edytuj(e){
                             document.getElementById("myButton").addEventListener("click", function () {
 
 
-                                //tutaj wysłanie PUT
-
                                 var obj = {};
                                 var elements = form.querySelectorAll("input, input, input");
                                 //obj[ 'id' ] = id;
@@ -104,11 +112,12 @@ function edytuj(e){
                                         obj[ name ] = value;
                                     }
                                 }
-
+                        
                                 var content = JSON.stringify(obj);
 
                                 var xhr = new XMLHttpRequest();
 
+                                
                                 var url = "http://" + window.location.host + "/update/" + id;
 
                                 xhr.open("PUT", url, true);
@@ -124,7 +133,7 @@ function edytuj(e){
                                     }
                                 }
                                 xhr.send(content);
-                                alert("Edytowano, Id:" + id);
+                                alert("Edytowano studenta o id: " + id);
                             });
                         }
 

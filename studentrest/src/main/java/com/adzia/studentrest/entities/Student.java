@@ -20,6 +20,12 @@ public class Student {
         this.name = name;
     }
     
+        public Student(String name, String surname, Double avarage) {
+        this.name = name;
+        this.surname = surname;
+        this.avarage = avarage;
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter

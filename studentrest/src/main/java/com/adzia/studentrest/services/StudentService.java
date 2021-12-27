@@ -22,4 +22,13 @@ public class StudentService {
         studentRepository.save(student);
     }
     
+    public void deleteStudent(int id){
+        studentRepository.deleteById(id);
+    }
+    
+    public void getStudent(int id){
+        studentRepository.findStudentById(id);
+        
+    }
+    
 }

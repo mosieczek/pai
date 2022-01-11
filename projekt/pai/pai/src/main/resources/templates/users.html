@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Spring login application - Politechnika Lubelska</title>
+        <style>
+        .footer {
+        position: fixed; bottom: 0px; left: 1px; height: 50px;width: 100%;
+        }
+        .nav > li {
+        display: inline;
+        background: limegreen;
+        }
+        a { text-decoration: none; }
+        th,td {border: solid 1px black;padding: 5px;}
+        </style>
+    </head>
+    <body>
+        <div th:include="layout :: navigationPanel"></div>
+        <div>
+             <h1>Lista użytkowników:</h1>
+        <div th:if="${#lists.isEmpty(userlist)}">
+            Brak użytkowników w bazie danych...
+        </div>
+        <table th:if="${!#lists.isEmpty(userlist)}">
+            <thead>
+                <tr>
+                    <th>UserID</th>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Login</th>
+                    <th>Zaszyfrowane hasło</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${userlist}">
+                    <td th:text="${user.userid}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.surname}"></td>
+                    <td th:text="${user.login}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td><a th:href="@{/delete/__${user.userid}__}" >Usuń</a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div th:include="layout :: footer"></div>
+    </body>
+</html>

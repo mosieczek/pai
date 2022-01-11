@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
 getAllStudents();
 });
@@ -9,10 +11,11 @@ function getAllStudents(){
         }
         return response.json();
     })
-    .then( (data) => { pokazTabele(data); } )
+    .then( (data) => {  pokazTabele(data); } )
     .catch( (error) => { console.log(error); } );
 }
 function pokazTabele(response){ 
+    console.log("test");
     var main = document.getElementById('main');
     var content="<table border='1'> <thead> <tr> <th> ID</th> <th> Imię</th>"+
     "<th>Nazwisko</th><th>Średnia</th></tr></thead><tbody>";
@@ -22,8 +25,8 @@ function pokazTabele(response){
         var surname = response[st].surname;
         var average = response[st].avarage;
         content += "<tr><td>" + id + "</td><td>" + name + "</td><td>" + surname +
-        "</td><td>" + average + "</td><td><button onclick='edytuj(this)' value=" + id+ ">Edytuj</button></td>\n\
-        <td><button onclick='usun(this)' value=" + id+ ">Usuń</button></td></tr>";
+        "</td><td>" + average + "</td><td><button class='editBtn' onclick='edytuj(this)' value=" + id+ ">Edytuj</button></td>\n\
+        <td><button class='editBtn' onclick='usun(this)' value=" + id+ ">Usuń</button></td></tr>";
     }
     content += "</tbody></table>";
     main.innerHTML = content;
@@ -48,6 +51,7 @@ function dodaj(){
 } 
 
 function edytuj(e){
+
     const id = e.value;
     fetch("http://localhost:8080/students/all")
     .then((response) => {
@@ -59,11 +63,16 @@ function edytuj(e){
     .then( (data) => { pokazTabele(data); } )
     .catch( (error) => { console.log(error); } );
     
+
     
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "http://" + window.location.host +
             "/students/all", true);
     xhttp.onreadystatechange = function (e) {
+            var inputs = document.querySelectorAll('.editBtn');
+            inputs.forEach((input)=>{
+              input.disabled = true;
+            });
         if (xhttp.readyState === 4) {
             if (xhttp.responseText !== "[]") {
                 if (xhttp.status === 200) {
@@ -136,8 +145,6 @@ function edytuj(e){
                                 alert("Edytowano studenta o id: " + id);
                             });
                         }
-
-
                     }
                 }
             }

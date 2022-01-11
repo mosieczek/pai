@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Spring login application - Politechnika Lubelska</title>
+        <style>
+        .footer {
+        position: fixed; bottom: 0px; left: 1px; height: 50px;width: 100%;
+        }
+        .nav > li {
+        display: inline;
+        background: limegreen;
+        }
+        a { text-decoration: none; }
+        th,td {border: solid 1px black;padding: 5px;}
+        </style>
+    </head>
+    <body>
+
+        <div th:include="layout :: navigationPanel"></div>
+            <h1>Rejestracja:</h1>
+            <form th:action="@{/register}" method="POST" th:object="${user}">
+                <input type="text" th:field="*{name}" placeholder="Imię" th:errorClass="error"/>
+                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                <br/>
+                <input type="text" th:field="*{surname}" placeholder="Nazwisko" th:errorClass="error"/>
+                <span class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span>
+                <br/>
+                <input type="text" th:field="*{login}" placeholder="Login" th:errorClass="error"/>
+                <span class="error" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>
+                <br/>
+                <input type="password" th:field="*{password}" placeholder="Hasło" th:errorClass="error"/>
+                <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                <br/>
+                <button type="submit">Zarejestruj się</button>
+            </form>
+        <div th:include="layout :: footer"></div>
+    </body>
+</html>

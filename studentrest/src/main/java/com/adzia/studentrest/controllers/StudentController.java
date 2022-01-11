@@ -38,8 +38,13 @@ public class StudentController {
     
     @DeleteMapping("/delete/{id}")
     public String deleteStudent(@PathVariable("id") int id){
-        studentService.deleteStudent(id);
-        return "students";
+        Student student = studentRepository.findStudentById(id);
+        if(student != null){
+            studentService.deleteStudent(id);
+            return "students";
+        }
+        return "Nie ma studenta o takim id";
+        
     }
     
     @PutMapping("/update/{id}")

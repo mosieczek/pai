@@ -75,7 +75,7 @@ function App() {
       <div className="App">
 
           <h1>Lista studentów</h1>
-          <table className='studentsTable'>
+          <table border="1" className='studentsTable'>
             <thead>
               <tr>
                 <th>ID</th>

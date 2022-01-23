@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.adzia</groupId>
-	<artifactId>pairest</artifactId>
+	<artifactId>paiprojekt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pairest</name>
+	<name>pai</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

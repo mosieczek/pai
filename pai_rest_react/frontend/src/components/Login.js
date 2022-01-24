@@ -1,29 +1,36 @@
-import React, {useState, useEffect} from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import axios from 'axios';
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom'
 import { login } from '../services/authService';
+import lockedFridge from '../img/lockedFridge.jpg'
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export const Login = () => {
 
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
-    const [ errors, setErrors ] = useState({});
 
     const handleLogin = async (e) => {
+        e.preventDefault();
         try {
-            const { data } = await login({username: username, password: password});
-            console.log(data)
-            window.localStorage.setItem("token", data);
-            window.location = "/";
+            const { data } = await login({username: username, password: password}) 
+                window.localStorage.setItem("token", data.token);
+                window.location = "/";
+                
         } catch (error) {
-            alert('Nie udało się zalogować')
             console.log(error);
-            const errorsVal = { ...errors };
-            errorsVal.username = error.response.data;
-            errorsVal.password = error.response.data;
-            setErrors(errorsVal)
+            alert('Nie udało się zalogować, wprowadź poprawne dane')
         }
     };
     return (
-        <div className='App-body'>
+        <div className='App-body' 
+            style={{
+                backgroundImage: `url(${lockedFridge})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundAttacjment: 'fixed',
+                backgroundSize: 'cover'
+             }}>
             <h1>Logowanie</h1>
                 <form className="form-signin" onSubmit={handleLogin}>
                     <div className="input-group mb-4">
@@ -32,7 +39,7 @@ export const Login = () => {
                         type="login"
                         value={username}
                         onChange = {(e) => setUsername(e.target.value)}
-                        placeholder = "username"
+                        placeholder = "Username"
                         required
                         />
                     </div>
@@ -42,7 +49,6 @@ export const Login = () => {
                         type="password"
                         value={password}
                         onChange = {(e) => setPassword(e.target.value)}
-                        placeholder = "Password"
                         required
                         />
                     </div>

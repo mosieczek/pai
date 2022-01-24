@@ -3,9 +3,15 @@ import jwtDecode from "jwt-decode";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export function login(data) {
-    console.log(data)
-    return axios.post(`${apiUrl}/login`, data);
+    try{
+        const logowanie = axios.post(`${apiUrl}/login`, data);
+        return logowanie
+    } catch (error){
+        return console.log(error)
+    }
 }
+
+
 
 export function getCurrentUser() {
     try {

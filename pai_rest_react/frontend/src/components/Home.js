@@ -11,11 +11,11 @@ export const Home = () => {
         backgroundAttacjment: 'fixed',
         backgroundSize: 'cover'
      }}>
-          <p>
+          <p style={{textShadow:'3px 3px #000000'}}>
               Aplikacja stworzona w ramach laboratorium Programowanie Aplikacji Internetowych
           </p>
-          <p>
-              Zaloguj się aby uzyskać dostęp do zawartości
+          <p style={{textShadow:'3px 3px #000000'}}>
+              Zaloguj się, aby sprawdzić stan swojej lodówki
           </p> 
 
       </div>

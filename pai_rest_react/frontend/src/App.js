@@ -26,7 +26,7 @@ function App() {
           <div>
             <Navbar>
               <Nav>
-                <NavLink className = "btn btn-light btn-outline-primary" to="/">Home</NavLink>
+                <NavLink className = "btn btn-light btn-outline-primary" to="/">Strona główna</NavLink>
                 <NavLink className = "btn btn-light btn-outline-primary" to="/fridge">Lodówka</NavLink>
 
                 <NavLink className = "btn btn-light btn-outline-primary" to="/logout">Wyloguj</NavLink>
@@ -51,7 +51,7 @@ function App() {
           <div>
             <Navbar>
               <Nav>
-                <NavLink className = "btn btn-light btn-outline-primary" to="/">Home</NavLink>
+                <NavLink className = "btn btn-light btn-outline-primary" to="/">Strona główna</NavLink>
                 <NavLink className = "btn btn-light btn-outline-primary" to="/login">Logowanie</NavLink>
                 <NavLink className = "btn btn-light btn-outline-primary" to="/register">Rejestracja</NavLink>
 

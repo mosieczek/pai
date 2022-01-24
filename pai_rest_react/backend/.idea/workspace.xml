@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00d38a18-bad4-47ea-a377-2e86e5884620" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../projekt/restProba/react-jwt-auth" beforeDir="false" afterPath="$PROJECT_DIR$/../../projekt/restProba/react-jwt-auth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../projekt/restProba/spring-boot-spring-security-jwt-authentication" beforeDir="false" afterPath="$PROJECT_DIR$/../../projekt/restProba/spring-boot-spring-security-jwt-authentication" afterDir="false" />
-    </list>
+    <list default="true" id="00d38a18-bad4-47ea-a377-2e86e5884620" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,16 +18,20 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
       <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
         <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
@@ -52,10 +53,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Maven.backend">
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
     <configuration name="backend" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -103,7 +104,7 @@
       <workItem from="1642499511896" duration="14000" />
       <workItem from="1642957252282" duration="9469000" />
       <workItem from="1643008984454" duration="6312000" />
-      <workItem from="1643023808414" duration="238000" />
+      <workItem from="1643024049850" duration="3439000" />
     </task>
     <servers />
   </component>
